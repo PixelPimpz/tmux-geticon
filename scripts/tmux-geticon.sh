@@ -6,7 +6,7 @@ tmux display -p "tmux-geticon.sh running..."
 main() {
   local icons="$(tmux display -p "#{@LIB_ICON}")"
   local icon="$(yq e '.icons.[].$ICON' "${icons}" )" 
-        
+  (( $? != 0 )) && fatal "yq failed to get icon. Check paths and config"        
   echo ${icon}
 }
 
