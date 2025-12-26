@@ -7,8 +7,14 @@ main() {
   local icons="$(tmux display -p "#{@LIB_ICON}")"
   local icon="$(yq e '.icons.[].alert' "${icons}" | grep -v "null" )" 
   (( $? != 0 )) && fatal "yq failed to get icon. Check paths and config"        
+  result "${icon}" 
+}
+
+result() {
+  local icon="$1"
   tmux display -p "${icon}"
 }
+
 
 fatal() {
   local e="$1"
