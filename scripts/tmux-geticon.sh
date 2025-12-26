@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 tmux display -p "tmux-geticon.sh running..."
 [[ ! -x /usr/bin/yq ]] && fatal "\"yq\" executable not found."
-ICON="$1"
+[[ -n "$1" ]] && ICON="$1" || ICON="fallback-icon"
+
 main() {
   local icons="$(tmux display -p "#{@LIB_ICON}")"
   local icon="$(yq e '.icons.[].$ICON' "${icons}" )" 
