@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 tmux setenv '@PLUG_ROOT' "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-$PLUG_ROOT="$(tmux display -p "#{@PLUG_ROOT}")"
-$ICONS="$(tmux display -p "#{@LIB_ICON}")"
+PLUG_ROOT="$(tmux display -p "#{@PLUG_ROOT}")"
+ICONS="$(tmux display -p "#{@LIB_ICON}")"
 tmux display -p "${0##*/}"
 tmux bind M-g 'run "$PLUG_ROOT/scripts/tmux-geticon.sh"'
