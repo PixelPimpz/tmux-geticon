@@ -15,3 +15,5 @@ fatal() {
   printf 'ERROR: %s\n' "${e}"
   exit 1
 }
+
+main
