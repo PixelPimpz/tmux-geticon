@@ -21,7 +21,6 @@ result() {
   fi
 }
 
-
 fatal() {
   local e="$1"
   printf 'ERROR: %s\n' "${e}"
