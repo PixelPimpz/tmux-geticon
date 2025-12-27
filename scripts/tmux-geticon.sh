@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+DEBUG=1
 tmux display -p "tmux-geticon.sh running..."
 [[ ! -x /usr/bin/yq ]] && fatal "\"yq\" executable not found."
 [[ -n "$1" ]] && ICON="$1" || ICON="fallback-icon"
@@ -12,8 +13,11 @@ main() {
 
 result() {
   local icon="$1"
-  tmux display -p "${icon}"
-  tmux display -p "#{@PLUG_ROOT}"
+  if (( DEBUG == 1 )); then
+    tmux display -p "tmux-geticon: Icon: ${icon}"
+  else
+    echo "${icon}"
+  fi
 }
 
 
