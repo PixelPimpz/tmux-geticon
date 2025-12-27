@@ -13,6 +13,7 @@ main() {
 result() {
   local icon="$1"
   tmux display -p "${icon}"
+  tmux display -p "$PLUG_ROOT"
 }
 
 
