@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-DEBUG=1
-tmux display -p "tmux-geticon.sh running..."
+DEBUG=0
+(( DEBUG != 0 )) && tmux display -p "tmux-geticon.sh running..."
+
 [[ ! -x /usr/bin/yq ]] && fatal "\"yq\" executable not found."
 [[ -n "$1" ]] && ICON="$1" || ICON="fallback-icon"
 
