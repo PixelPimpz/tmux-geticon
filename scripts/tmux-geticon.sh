@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 ICON="$1"
 DEBUG=1
-ICONS='$(tmux display -p \"#{@LIB_ICON}\")'
-(( DEBUG == 1 )) && tmux display -p "tmux-geticon.sh running..."
+ICONS=$(tmux display -p "#{@LIB_ICON}")
 [[ ! -x /usr/bin/yq ]] && fatal "\"yq\" executable not found."
 [[ ! -n "$ICON" ]] && ICON="default"
 
@@ -13,7 +12,6 @@ main() {
 }
 
 result() {
-  local ico="$1"
   echo "${ico}"
 }
 
