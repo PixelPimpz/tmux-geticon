@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-DEBUG=0
+DEBUG=1
 (( DEBUG != 0 )) && tmux display -p "tmux-geticon.sh running..."
 
 [[ ! -x /usr/bin/yq ]] && fatal "\"yq\" executable not found."
@@ -28,4 +28,3 @@ fatal() {
 }
 
 main
-
