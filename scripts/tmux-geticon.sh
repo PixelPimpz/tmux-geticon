@@ -2,8 +2,9 @@
 DEBUG=1
 
 [[ ! -x /usr/bin/yq ]] && fatal "\"yq\" executable not found."
-[[ -n "$1" ]] && ICON="$1" || ICON="fallback-icon"
+[[ -n "$1" ]] && ICON="$1" || ICON="default"
 tmux display -p "ICON: $ICON"
+
 main() {
   local icons="$(tmux display -p "#{@LIB_ICON}")"
   local icon="$(yq ".icons.[].$ICON" "${icons}" | grep -v "null" )" 
