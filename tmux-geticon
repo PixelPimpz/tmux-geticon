@@ -3,7 +3,6 @@ tmux setenv -u @PLUG_ROOT
 tmux setenv '@PLUG_ROOT' "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PLUG_ROOT="$(tmux display -p "#{@PLUG_ROOT}")"
 tmux setenv '@GET_ICON' "$PLUG_ROOT/scripts/tmux-geticon.sh"
-ICONS="$(tmux display -p "#{@LIB_ICON}")"
 
 ## run main plugin script
 $PLUG_ROOT/scripts/tmux-geticon.sh
