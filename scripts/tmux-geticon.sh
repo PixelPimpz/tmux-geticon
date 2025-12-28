@@ -14,11 +14,8 @@ main() {
 
 result() {
   local icon="$1"
-  if (( DEBUG == 1 )); then
-    tmux display -p "tmux-geticon: Icon: ${icon}"
-  else
-    echo "${icon}"
-  fi
+  (( DEBUG != 0 )) && tmux display -p "tmux-geticon: Icon: ${icon}"
+  echo "${icon}"
 }
 
 fatal() {
