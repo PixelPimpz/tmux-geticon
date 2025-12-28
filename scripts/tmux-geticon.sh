@@ -9,12 +9,12 @@ main() {
   local icons="$(tmux display -p "#{@LIB_ICON}")"
   local icon="$(yq e ".icons.[].$ICON" "${icons}" | grep -v "null" )" 
   (( $? != 0 )) && fatal "yq failed to get icon. Check paths and config"        
+  (( DEBUG != 0 )) && tmux display -p ">> Icon: ${icon}"
   result "${icon}" 
 }
 
 result() {
   local icon="$1"
-  (( DEBUG != 0 )) && tmux display -p "tmux-geticon: Icon: ${icon}"
   echo "${icon}"
 }
 
