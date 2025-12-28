@@ -3,7 +3,6 @@ DEBUG=1
 
 [[ ! -x /usr/bin/yq ]] && fatal "\"yq\" executable not found."
 [[ -n "$1" ]] && ICON="$1" || ICON="default"
-tmux display -p "ICON: $ICON"
 
 main() {
   local icons="$(tmux display -p "#{@LIB_ICON}")"
@@ -11,6 +10,7 @@ main() {
   (( $? != 0 )) && fatal "yq failed to get icon. Check paths and config"        
   if (( DEBUG != 0 )); then
     tmux display -p "tmux-geticon.sh running..."
+    tmux display -p ">> ICON: $ICON"
     tmux display -p ">> Icon: ${icon}"
   fi
   result "$icon" 
