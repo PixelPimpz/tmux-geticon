@@ -7,7 +7,7 @@ ICONS=$(tmux display -p "#{@LIB_ICON}")
 main() {
   local icon="$(yq ".icons.[].$ICON" "${ICONS}" | grep -v "null" )" 
   (( $? != 0 )) && fatal "yq failed to get icon. Check paths and config"        
-  tmux display -p "$icon" 
+  #tmux display -p "$icon" 
 }
 
 fatal() {
